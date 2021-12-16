@@ -44,4 +44,14 @@ Component.js
 
 This will be added together and made into a css file
 
+## Props
+
+```js
+    component('clickable-button') = `
+        <button>
+            ${text}
+        </button>
+    `
+```
+
 ## This is not final and changes will be made

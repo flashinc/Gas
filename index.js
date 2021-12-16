@@ -1,8 +1,8 @@
-export { component, tag }
+// export { component, tag }
 
 function component(componentName) {
     return (
-        document.querySelector('[component="' + componentName + '"]').innerHTML
+        document.querySelector('[component="' + componentName + '"]')
     )
 }
 
@@ -26,5 +26,3 @@ function tag(tagName) {
 
     )
 }
-
-console.log(tag('text'));

@@ -8,8 +8,12 @@
 </head>
 <body>
     <div component="yes" text="hello">
-        <h1>Hello</h1>
     </div>
-    <script src="index.js"></script>
+    <script src="index.js">
+        component('yes').innerHTML = `
+            <h1>Hello</h1>
+        `
+
+    </script>
 </body>
 </html>
