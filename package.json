@@ -1,0 +1,19 @@
+{
+    "name": "gas",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "node ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/flashinc/Gas.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/flashinc/Gas/issues"
+    },
+    "homepage": "https://github.com/flashinc/Gas#readme"
+}
