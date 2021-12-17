@@ -5,7 +5,7 @@
 ```js
     component('clickable-button') = `
         <button onClick="${click}">
-            ${text}
+            I'm clickable!
         </button>
     `
 ```
@@ -13,17 +13,16 @@
 ## User side html
 
 ```html
-    <div component="clickable-button" text="Click me!" click="stopTime('20')">
+    <div component="clickable-button" click="stopTime(20)">
 
     </div>
-    <script src="framework.js"></script>
 ```
 
 ## Output
 
 ```html
     <div>
-        <button onClick="stopTime('20')">Click me!</button>
+        <button onClick="stopTime(20)">I'm clickable!</button>
     </div>
 ```
 
@@ -47,11 +46,25 @@ This will be added together and made into a css file
 ## Props
 
 ```js
-    component('clickable-button') = `
+    component('button') = `
         <button>
             ${text}
         </button>
     `
+```
+
+```html
+    <div component="button" text="Click me!">
+
+    </div>
+```
+
+Output:
+
+```html
+    <div component="button" text="Click me!">
+        <button>Click me!</button>
+    </div>
 ```
 
 ## This is not final and changes will be made
