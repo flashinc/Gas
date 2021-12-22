@@ -3,26 +3,52 @@
 ## Component.js
 
 ```js
-    component('clickable-button') = `
-        <button onClick="${click}">
-            I'm clickable!
-        </button>
-    `
+    export class button extends GasConstruct{
+        // something like a dynamic() function or maybe a seperate function for css and js 
+        dynamic(){
+            css(){
+                return css`
+                    button{
+                        color: black;
+                        background-color: white;
+                        border: none;
+                    }
+                `
+            }
+            js(){
+                // for the 'log' variable we will need the user to declare it somewhere so we can fetch it from the html
+                return js`
+                    console.log('${log}')
+                `
+            }
+        }
+        render(){
+            return html`
+                <div>   
+                    <button>Hi!</button>
+                </div>
+            `
+        }
+    }
 ```
 
-## User side html
+## Input
 
-```html
-    <div component="clickable-button" click="stopTime(20)">
-
-    </div>
+``` js
+    // file where the user declares where and when to put the components in the html
+    // will look different in production
+    class home extends GasRender{
+        render html`
+            
+        `
+    }
 ```
 
 ## Output
 
 ```html
     <div>
-        <button onClick="stopTime(20)">I'm clickable!</button>
+        <button log="It works!!">Hi!</button>
     </div>
 ```
 

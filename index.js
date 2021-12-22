@@ -1,11 +1,10 @@
 // export { component, tag }
 
-class Constructor {
-    constructor(componentName) {
-        this.componentName = componentName
-    }
-    createElement(element) {
-        return document.createElement(element)
+class GasConstruct {
+    render() {
+        return html `
+            <button> hello </button>
+        `
     }
 
     // I want to be able to change the text of an element with a html attribute e.g: <div text="hello"></div>. so to do that i need to be able to store the value of the attribute, in this case "hello", in a variable.
