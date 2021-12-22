@@ -1,14 +1,13 @@
 // export { component, tag }
 
-class nitro {
+class Constructor {
     constructor(componentName) {
         this.componentName = componentName
     }
-    new() {
-        return (
-            document.querySelector('[component="' + this.componentName + '"]').innerHTML
-        )
+    createElement(element) {
+        return document.createElement(element)
     }
+
     // I want to be able to change the text of an element with a html attribute e.g: <div text="hello"></div>. so to do that i need to be able to store the value of the attribute, in this case "hello", in a variable.
     // this is used when you are making a component, and you want to change the text of one of the element, or maybe two. E.G:
     /*
