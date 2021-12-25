@@ -1,5 +1,7 @@
 # Expectations of what it should be
 
+- have two different versions... one for light weight and fast and the other for more complex and larger sites
+
 ## Build in functions
 
 - props and prop functions
