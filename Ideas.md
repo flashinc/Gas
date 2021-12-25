@@ -18,8 +18,31 @@
 
 ## Compile client side
 
+## Have a CDN builtin to the framework website
+
 ## css, js and html all easy to change with in the html config / prop
 
 ## use the html or the js to declare where to put the components idk which one
 
 - i think js but html will also work
+
+## things
+
+// something like a dynamic() function or maybe a seperate function for css and js 
+        dynamic(){
+            css(){
+                return css`
+                    button{
+                        color: black;
+                        background-color: white;
+                        border: none;
+                    }
+                `
+            }
+            js(){
+                // for the 'log' variable we will need the user to declare it somewhere so we can fetch it from the html
+                return js`
+                    console.log('${log}')
+                `
+            }
+        }

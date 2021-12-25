@@ -1,27 +1,53 @@
 # Expectations of what it should be
 
+## Build in functions
+
+- props and prop functions
+
+```html
+    <!-- This logs "Hello world" -->
+    <div log="Hello world"></div>
+
+    <!-- This div has the text "Hello world" -->
+    <div text="Hello world"></div>
+
+    <!-- This allows you to use gas specific function for when you arent using a CDN, This logs "Hello world" -->
+    <div g-click="conole.log(gas.return('Hello world'))"></div>
+```
+
+## Just html
+
+```html
+    ...
+    <div id="button"></div>
+    ...
+    <script src="[Link to the cdn]"></script>
+    <script>
+        component('button'){
+            render(){
+                return html`
+                    <button>
+                        ${Text}
+                    </button>
+                `
+            }
+            // need to declare the prop so the framework can create the variable and obtain the value from the html
+            props(){
+                // Thi will change 100%
+                return props{
+                    props : 'Text'
+                }
+            }
+        };
+    </script>
+```
+
+## With component files
+
 ## Component.js
 
 ```js
-    export class button extends GasConstruct{
-        // something like a dynamic() function or maybe a seperate function for css and js 
-        dynamic(){
-            css(){
-                return css`
-                    button{
-                        color: black;
-                        background-color: white;
-                        border: none;
-                    }
-                `
-            }
-            js(){
-                // for the 'log' variable we will need the user to declare it somewhere so we can fetch it from the html
-                return js`
-                    console.log('${log}')
-                `
-            }
-        }
+    export class button{
         render(){
             return html`
                 <div>   
@@ -32,6 +58,8 @@
     }
 ```
 
+
+## This point onwards is obosolete and wont be used, it is still good inspiration
 ## Input
 
 ``` js
