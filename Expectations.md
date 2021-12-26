@@ -10,7 +10,10 @@
     <!-- This logs "Hello world" -->
     <div log="Hello world"></div>
 
-    <!-- This div has the text "Hello world" -->
+    <!-- This div has the text of "Hello world" 
+        You can also use html with this function
+        E.g: <div text="<h1>Hello world</h1>"></div> -->
+    -->
     <div text="Hello world"></div>
 
     <!-- This allows you to use gas specific function for when you arent using a CDN, This logs "Hello world" -->
@@ -21,7 +24,7 @@
 
 ```html
     ...
-    <div id="button"></div>
+    <div id="button" Text="Hello!"></div>
     ...
     <script src="[Link to the cdn]"></script>
     <script>
