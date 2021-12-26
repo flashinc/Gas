@@ -28,17 +28,16 @@
     ...
     <script src="[Link to the cdn]"></script>
     <script>
-        component('button'){
-            render(){
-                return html`
-                    <button>
-                        ${Text}
-                    </button>
-                `
-            }
-            // need to declare the prop so the framework can create the variable and obtain the value from the html
-            props(){
-                // Thi will change 100%
+        // You will be able to define multiple components in one file
+        new component('button'){
+            return html`
+                <button>
+                    ${Text}
+                </button>
+            `
+            // you need to declare the prop so the framework can create the variable and obtain the value from the html
+            props {
+                // This will change 100%
                 return props{
                     props : 'Text'
                 }
