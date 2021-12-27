@@ -1,10 +1,16 @@
-class component {
-    constructor(componentName) {
-        this.componentName = componentName
-    }
-    render() {
-        getElementById(this.componentName).innerHTML = this.html
-    }
+//class component {
+//     constructor(componentName, html) {
+//         this.componentName = componentName
+//         this.html = html
+//     }
+//     render() {
+//         getElementById(this.componentName).innerHTML = this.html
+//     }
+// }
+
+function component(componentName, html) {
+    var el = document.getElementById(componentName)
+    el.innerHTML = html
 }
 
 // let link = document.querySelector('#js');
