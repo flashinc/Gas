@@ -11,16 +11,16 @@ function component(componentName, html) {
                 if (this.html.html[j] === '}') {
                     var end = j;
                     var value = this.html.html.slice(start + 1, end);
-                    // console.log(value);
                     // remove all the spaces from value
                     value = value.replace(/\s/g, '');
                     var link = document.getElementById(componentName)
                     var target = link.getAttribute(value);
-                    // remove all of the character between {} inclusive from this.html.html and add target to the place where it was
+                    // remove all of the character between {  } inclusive from this.html.html and add target to the place where it was
                     this.html.html = this.html.html.replace(this.html.html.slice(start, end + 1), target);
                     newHtml = this.html.html;
-                    // console.log(newHtml);
                     el.innerHTML = newHtml;
+                    // console.log(newHtml);
+                    // console.log(value);
                 }
             }
         }
