@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2021, Lachlan Jowett, Lachlanjowett.com
+ * Please dont replicate, modify, or distribute without the express permission of the author.
+ */
+
 function component(componentName, html) {
     let newHtml;
     this.html = html;
@@ -25,8 +30,8 @@ function component(componentName, html) {
             }
         }
     }
-    // Do this for js so you can change it with html
-}
+    // Do this for js and css so you can change it with html
+};
 
 /* TODO: 
  * Add a function for prop fixing
@@ -38,4 +43,5 @@ function component(componentName, html) {
 
 /* Fixes:
  * make it a class for better control
+ * root.textContent = ` ${div}{ background-color: #eef; padding: 0 2px }`;
  */
