@@ -27,3 +27,15 @@ function component(componentName, html) {
     }
     // Do this for js so you can change it with html
 }
+
+/* TODO: 
+ * Add a function for prop fixing
+ * Add functions to everything to make it easier to understand
+ * and make the code lighter weight
+ * add custom component html e.g: <component\>
+ * add functionalities for html e.g: <component g-for="i in i"\>
+ */
+
+/* Fixes:
+ * make it a class for better control
+ */
