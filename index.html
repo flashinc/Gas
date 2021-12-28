@@ -7,17 +7,21 @@
     <title>Test</title>
 </head>
 <body>
-    <div id="button" hello="it works">
+    <div id="button" Hello="hey there">
+    <component-button/>
     </div>
     <script src="index.js"></script>
     <script>
         component( 'button', {
             html: `
-                <button>
-                    { hello }
-                </button>
-                `
-            }
+                <h1>
+                    { Hello }
+                </h1>
+                `,
+            js: `
+                console.log( 'hello' );
+            `
+        }
         )
     </script>
 </body>

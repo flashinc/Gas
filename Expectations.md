@@ -62,8 +62,8 @@
     }
 ```
 
-
 ## This point onwards is obosolete and wont be used, it is still good inspiration
+
 ## Input
 
 ``` js
@@ -106,7 +106,7 @@ This will be added together and made into a css file
 ```js
     component('button') = `
         <button>
-            ${text}
+            { text }
         </button>
     `
 ```
