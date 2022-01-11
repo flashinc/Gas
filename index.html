@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="button" Hello="hey there"></div>
+    <div id="button" Hello="yes"></div>
     <script src="index.js"></script>
     <script>
         new component( 'button', {
@@ -15,10 +16,14 @@
                 <h1>
                     { Hello }
                 </h1>
-                `,
-            js: `
-                console.log( 'hello' );
-            `
+                `
+        })
+        new component( 'button2', {
+            html: `
+                <h1>
+                    { Hello }
+                </h1>
+                `
         })
     </script>
 </body>
