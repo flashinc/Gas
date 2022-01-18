@@ -46,3 +46,17 @@
                 `
             }
         }
+
+/* TODO: 
+// do a for loop to apply the different html params to each different time the component is called
+    // e.g:
+ * Add a function for prop fixing
+ * Add functions to everything to make it easier to understand
+ * and make the code lighter weight
+ * add custom component html e.g: <component\>
+ * add functionalities for html e.g: <component g-for="i in i"\>
+ */
+
+/* Fixes:
+ * root.textContent = ` ${div}{ background-color: #eef; padding: 0 2px }`;
+ */

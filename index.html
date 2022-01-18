@@ -7,18 +7,10 @@
     <title>Test</title>
 </head>
 <body>
-    <div id="button" Hello="hey there"></div>
-    <div id="button" Hello="yes"></div>
+    <div id="button" Hello="nope"></div>
     <script src="index.js"></script>
     <script>
-        new component( 'button', {
-            html: `
-                <h1>
-                    { Hello }
-                </h1>
-                `
-        })
-        new component( 'button2', {
+        new component( '#button', {
             html: `
                 <h1>
                     { Hello }

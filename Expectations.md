@@ -17,7 +17,7 @@
     <div text="Hello world"></div>
 
     <!-- This allows you to use gas specific function for when you arent using a CDN, This logs "Hello world" -->
-    <div g-click="conole.log(gas.return('Hello world'))"></div>
+    <div g-click="console.log(gas.return('Hello world'))"></div>
 ```
 
 ## Just html
