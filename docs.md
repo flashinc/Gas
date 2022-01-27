@@ -9,6 +9,7 @@ Dev code:
     <div id="component">
         <pageTitle title="hi"></pageTitle>
     </div>
+    <script src="/gas.min.js"></script>
     <script>
         new component({
             sel: '#component',
@@ -16,8 +17,8 @@ Dev code:
             props: [
                 'title'
             ],
-            code: `
-                <h1>{ title }</h1>
+            html: `
+                <h1>{{ title }}</h1>
             `
         })
     </script>
