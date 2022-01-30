@@ -7,6 +7,7 @@
 // Global variables
 let props = [];
 let el;
+let root;
 //
 
 function component(data) {
@@ -21,32 +22,52 @@ function component(data) {
     let html = this.data.html;
     //
 
+    // Defining custom html elements
+    // customElements.define(name,
+    //     class extends HTMLElement {
+    //         constructor() {
+    //             super();
+    //         }
+    //     });
+    //
+
     // A little bit of admin stuff
     props = propsArry;
-    let root = document.querySelector(selector);
+    root = document.querySelector(selector);
     el = root.getElementsByTagName(name);
     let elLength = el.length;
-    console.log(elLength);
+    //console.log(elLength);
     //
 
     // getting the html and formatting it
-    html.toString();
-    console.log(html);
+    html = propFix(html);
+    el.innerHTML = html;
+    console.log(el);
     //
 }
 
-function propFix(code, propValue) {
+function propValue(prop) {
+    let target = root.getAttribute(prop);
+    // if (target[0] != null) {
+    //     target[0].toString();
+    //     console.log('you done messed up');
+    // }
+    console.log(target);
+    return target;
+}
+
+function propFix(code) {
     let i;
     code.toString();
     for (i = 0; i < code.split("{{").length; i++) {
-        var a = code.split("{{")[1];
-        var left = code.split("{{")[0];
+        var a = code.split("{{");
+        let left = a[0];
+        var prop = a[1].split("}}")[0].replace(" ", "");
         var right = code.split("}}")[1];
-        var prop = a.split("}}")[0].replace(" ", "");
         console.log(prop);
-        let target = el.getAttribute(prop);
-        console.log(target);
-        var replacedProp = left + propValue + right;
+        code = propValue(prop);
+        var replacedProp = left + code + right;
+        console.log(replacedProp);
         return replacedProp;
     }
 }

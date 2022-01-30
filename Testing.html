@@ -8,21 +8,20 @@
 </head>
 <body>
     <div id="component">
-        <pageTitle title="hi"></pageTitle>
+        <page-title title="hi">e</page-title>
     </div>
     <script src="index.js"></script>
     <script>
         new component({
             sel: '#component',
-            name: 'pageTitle',
+            name: 'page-title',
             props: [
                 'title'
             ],
             html: `
                 <h1>{{ title }}</h1>
             `
-        })
-        console.log(propFix(`<h1 title="{{ title }}"></h1>`, "replaced prop!"));
+        });
     </script>
 </body>
 </html>
