@@ -5,6 +5,15 @@
 ### Server side rendering:
 
 use .gas files maybe?
+Just not have ssr?
+
+### docs
+
+Start making the docs early on
+
+### props
+
+Have [prop]-function="<function()> to allow users to use a function on the element /component
 
 ## Gas's main aims / goals
 
