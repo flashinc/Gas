@@ -23,12 +23,13 @@ function component(data) {
     //
 
     // Defining custom html elements
-    // customElements.define(name,
-    //     class extends HTMLElement {
-    //         constructor() {
-    //             super();
-    //         }
-    //     });
+    customElements.define(name, class extends HTMLElement {
+        constructor() {
+            super();
+            this.attachShadow({ mode: 'open' });
+            this.shadowRoot.innerHTML = html;
+        }
+    });
     //
 
     // A little bit of admin stuff
