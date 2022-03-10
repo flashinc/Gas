@@ -18,12 +18,17 @@ function component(data) {
     // Formatting the user input
     let name = this.data.name;
     let selector = this.data.sel;
-    let propsArry = this.data.props;
+    //  let props = this.data.props;
     let html = this.data.html;
     //
 
+    // A little bit of admin stuff
+    root = document.querySelector(selector);
+    el = root.getElementsByTagName(name);
+    //
+
     // Defining custom html elements
-    customElements.define(name, class extends HTMLElement {
+    var a = customElements.define(name, class extends HTMLElement {
         constructor() {
             super();
             this.attachShadow({ mode: 'open' });
@@ -32,28 +37,23 @@ function component(data) {
     });
     //
 
-    // A little bit of admin stuff
-    props = propsArry;
-    root = document.querySelector(selector);
-    el = root.getElementsByTagName(name);
-    let elLength = el.length;
-    //console.log(elLength);
-    //
-
     // getting the html and formatting it
     html = propFix(html);
     el.innerHTML = html;
+    el.innerText = "a";
     console.log(el);
+    console.log(a)
     //
 }
 
 function propValue(prop) {
-    let target = root.getAttribute(prop);
-    // if (target[0] != null) {
-    //     target[0].toString();
-    //     console.log('you done messed up');
-    // }
-    console.log(target);
+    let target;
+    if (root) {
+        let el = root.children;
+        // get the attribute from the element
+        target = el[0].getAttribute(prop);
+        console.log("target: " + target);
+    }
     return target;
 }
 
@@ -65,10 +65,10 @@ function propFix(code) {
         let left = a[0];
         var prop = a[1].split("}}")[0].replace(" ", "");
         var right = code.split("}}")[1];
-        console.log(prop);
+        console.log("prop: " + prop);
         code = propValue(prop);
         var replacedProp = left + code + right;
-        console.log(replacedProp);
+        console.log("replaced prop: " + replacedProp);
         return replacedProp;
     }
 }
