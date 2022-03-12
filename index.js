@@ -32,7 +32,12 @@ function component(data) {
         constructor() {
             super();
             this.attachShadow({ mode: 'open' });
+            //getProp();
             this.shadowRoot.innerHTML = html;
+            let i;
+            for (i = 0; i in props; i++){
+                console.log(this.getAttribute(props[i]))
+            }
         }
     });
     //
@@ -40,9 +45,7 @@ function component(data) {
     // getting the html and formatting it
     html = propFix(html);
     el.innerHTML = html;
-    el.innerText = "a";
     console.log(el);
-    console.log(a)
     //
 }
 
@@ -72,26 +75,3 @@ function propFix(code) {
         return replacedProp;
     }
 }
-
-// this.html.html.split('{  }')
-// for (var i = 0; i < this.html.html.length; i++) {
-//     if (this.html.html[i] === '{') {
-//         var start = i;
-//         for (var j = i; j < this.html.html.length; j++) {
-//             if (this.html.html[j] === '}') {
-//                 var end = j;
-//                 var value = this.html.html.slice(start + 1, end);
-//                 // remove all the spaces from value
-//                 value = value.replace(/\s/g, '');
-//                 var link = document.querySelector(componentName)
-//                 var target = link.getAttribute(value);
-//                 // remove all of the character between {  } inclusive from this.html.html and add target to the place where it was
-//                 this.html.html = this.html.html.replace(this.html.html.slice(start, end + 1), target);
-//                 newHtml = this.html.html;
-//                 el.innerHTML = newHtml;
-//             }
-//         }
-//     }
-// }
-
-// console.log(propFix(`<h1 title="{{ e }}">{{ hi }}</h1>`, "replaced prop!"));
