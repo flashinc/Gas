@@ -14,9 +14,9 @@ Dev code:
         new component({
             sel: '#component',
             name: 'pageTitle',
-            props: [
-                'title'
-            ],
+//            props: [
+//                'title'
+//            ],
             html: `
                 <h1>{{ title }}</h1>
             `
@@ -29,6 +29,8 @@ Rendered code
 ```html
     ...
     <div id="component">
-        <h1>hi</h1>
+        <pageTitle title="hi">
+            <h1>hi</h1>
+        </pageTitle>
     </div>
 ```

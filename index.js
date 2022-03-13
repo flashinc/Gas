@@ -3,71 +3,66 @@
  * Copyright (c) 2021, Lachlan Jowett, Lachlanjowett.com
  * Please do not replicate, modify, or distribute without the express permission of the author.
  */
+var data = {}
 
-// Global variables
-let props = [];
-let el;
-let root;
-//
+function component(d) {
+    this.data = d;
+    console.log(this.data)
+    data = {
+        name: this.data.name,
+        selector: this.data.sel,
+        html: this.data.html,
+        props: this.data.props,
+        propValues: "",
+        root: "",
+        element: "",
+    };
+    data.root = document.querySelector(data.selector);
+    data.element = data.root.getElementsByTagName(data.name);
 
-function component(data) {
-    // Formatting json string to json array
-    this.data = data;
-    //
-
-    // Formatting the user input
-    let name = this.data.name;
-    let selector = this.data.sel;
-    //  let props = this.data.props;
-    let html = this.data.html;
-    //
-
-    // A little bit of admin stuff
-    root = document.querySelector(selector);
-    el = root.getElementsByTagName(name);
-    //
-
-    // Defining custom html elements
-    var a = customElements.define(name, class extends HTMLElement {
+    class element extends HTMLElement {
         constructor() {
             super();
             this.attachShadow({ mode: 'open' });
-            //getProp();
-            this.shadowRoot.innerHTML = html;
-            let i;
-            for (i = 0; i in props; i++){
-                console.log(this.getAttribute(props[i]))
-            }
         }
-    });
-    //
+        connectedCallback() {
+            let props = [];
+            for (let i = 0; i < data.props.length; i++) {
+                // need to change this to push to the array like this: e.g array: data.props[i]: "temp"
+                let temp = this.getAttribute(data.props[i]);
+                props.push(data.props[i] + ":" + temp + "\r\n");
+            }
+            data.propValues = props
+            console.log(props)
+        }
+    }
+    customElements.define(data.name, element);
 
     // getting the html and formatting it
-    html = propFix(html);
-    el.innerHTML = html;
-    console.log(el);
-    //
+    data.html = propFix(data.html);
+    data.root.innerHTML = data.html;
+    console.log(data.root.innerHTML);
 }
 
 function propValue(prop) {
-    let target;
-    if (root) {
-        let el = root.children;
-        // get the attribute from the element
-        target = el[0].getAttribute(prop);
-        console.log("target: " + target);
-    }
-    return target;
+    let split = ":";
+    split.toString();
+    let target = data.propValues.toString().split(":");
+    // TEMP: need to remove \r\n from the string before returning
+    // also need to fix the issue with it outputting the other prop name as the value
+    console.log(target[1]);
+    return target[1];
 }
 
 function propFix(code) {
-    let i;
     code.toString();
-    for (i = 0; i < code.split("{{").length; i++) {
-        var a = code.split("{{");
+    // fix the issue with it picking up the last { in the previous prop and the first { in the next prop
+    console.log(code.split("{{").length);
+    for (let i = 0; i < code.split("{{").length; i++) {
+        let a = code.split("{{");
         let left = a[0];
-        var prop = a[1].split("}}")[0].replace(" ", "");
-        var right = code.split("}}")[1];
+        let prop = a[1].split("}}")[0].replace(" ", "");
+        let right = code.split("}}")[1];
         console.log("prop: " + prop);
         code = propValue(prop);
         var replacedProp = left + code + right;
