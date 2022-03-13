@@ -3,6 +3,7 @@
  * Copyright (c) 2021, Lachlan Jowett, Lachlanjowett.com
  * Please do not replicate, modify, or distribute without the express permission of the author.
  */
+// need to make this part of the component function as having multiple components will cause issues
 var data = {}
 
 function component(d) {
@@ -36,6 +37,13 @@ function component(d) {
             console.log(props)
         }
     }
+
+    /*  Example
+    function hello(){
+        console.log("hello");
+    }
+    */
+
     customElements.define(data.name, element);
 
     // getting the html and formatting it
