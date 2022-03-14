@@ -10,7 +10,7 @@
 
 <body>
     <div id="component">
-        <page-title title="there"></page-title>
+        <page-title title="This is the title component i just made!"></page-title>
     </div>
     <script src="index.js"></script>
     <script>
@@ -21,29 +21,9 @@
                 'title'
             ],
             html: `
-                <h1>Hi {{ title }}</h1>
-            `,
-            style: `
-                h1 {
-                    color: red;
-                }
+                <h1>Hi! {{ title }}</h1>
             `
         });
-        
-/*   Doesnt work
-        new component({
-            sel: '#component',
-            name: 'page-paragraph',
-            props: [
-                'paragraph'
-            ],
-            html: `
-                <h1>{{ paragraph }}</h1>
-            `
-        });
-        
-        <page-paragraph paragraph="Hello there!"></page-paragraph>
-*/
     </script>
 </body>
 
