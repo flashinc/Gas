@@ -5,77 +5,54 @@
  */
 
 
-function component(d) {
-    var data = {}
-    this.data = d;
-    data = {
-        name: this.data.name,
-        selector: this.data.sel,
-        html: this.data.html,
-        props: this.data.props,
-        propValues: "",
-        root: "",
-        element: "",
-        elements: [],
-    };
-    data.root = document.querySelector(data.selector);
+function component(data) {
+    this.data = data
+    this.html = this.data.html
 
-    class element extends HTMLElement {
-        constructor() {
-            super();
-            this.attachShadow({ mode: 'open' });
-            data.element = this.shadowRoot
-            data.elements.push(this.shadowRoot)
-            console.log(data.elements)
+    function getComponent(html) {
+        // use regex to find all instances of {{}} and return the value of the variable as an array
+        var regex = /{{(.*?)}}/g;
+        var list = [];
+        var matches = html.match(regex)
+        // loop through the array and replace the {{}} with the value of the variable
+        for (var i = 0; i < matches.length; i++) {
+            var variable = matches[i].replace(/{{|}}/g, "")
+            // remove the space from the variable name
+            variable = variable.replace(/\s/g, '')
+            list = list.concat(variable)
         }
-        connectedCallback() {
-            let props = [];
-            for (let i = 0; i < data.props.length; i++) {
-                // need to change this to push to the array like this: e.g array: data.props[i]: "temp"
-                let temp = this.getAttribute(data.props[i]);
-                props.push(data.props[i] + ":" + temp + "\r\n");
-            }
-            data.propValues = props
-            console.log(props)
-        }
+        return list
     }
 
-    function propValue(prop, i) {
-        let split = ":";
-        split.toString();
-        for (let i = 0; i < data.propsValues; i++) {
-            let target = data.propValues.toString().split(":");
-            // TEMP: need to remove \r\n from the string before returning
-            // also need to fix the issue with it outputting the other prop name as the value
-            console.log(target[1]);
-            //if (target[1] == prop) {
-            return target[1];
-            //}
-
+    function createCustomElement(html, data) {
+        let element;
+        // create a new element using custom web components
+        element = document.createElement(data.tag)
+        // set the attributes of the element
+        for (var i = 0; i < data.attributes.length; i++) {
+            element.setAttribute(data.attributes[i].name, data.attributes[i].value)
         }
-
-        function propFix(code, i) {
-            code.toString();
-            // fix the issue with it picking up the last { in the previous prop and the first { in the next prop
-            for (let i = 0; i < code.split("{{").length; i++) {
-                let a = code.split("{{");
-                let left = a[0];
-                let prop = a[1].split("}}")[0].replace(" ", "");
-                let right = code.split("}}")[1];
-                console.log("prop: " + prop);
-                code = propValue(prop);
-                var replacedProp = left + code + right;
-                console.log("replaced prop: " + replacedProp);
-                return replacedProp;
-            }
-        }
-
-        customElements.define(data.name, element);
-
-        let i;
-        for (i = 0; i < data.elements.length; i++) {
-            // Make it a for loop with i, then use the i to get the prop name and value for each instance of the element, also send i to the functions to allow them to easier identify the prop value
-            data.html = propFix(data.html, i);
-            data.element.innerHTML = data.html;
-        }
+        // set the innerHTML of the element
+        element.innerHTML = html
+        return element
     }
+
+
+    function getVariable(variable) {
+        // get the value of the variable
+        var value = window[variable]
+        return value
+    }
+
+    for (i = 0; i < getComponent(this.html).length; i++) {
+        // replace the {{}} with the value of the variable
+        var variable = getComponent(this.html)[i]
+        var value = getVariable(variable)
+        this.html = this.html.replace("{{" + variable + "}}", value)
+    }
+
+    
+
+    console.log(getComponent(this.html))
+
+}
